@@ -1,0 +1,57 @@
+analysis:
+  anomaly_threshold: 3.0
+  correlation_threshold: 0.7
+  degradation_threshold: -0.1
+  trend_window: 24
+data:
+  backup_enabled: true
+  compression: true
+  input_formats:
+  - json
+  - csv
+  - excel
+  output_formats:
+  - json
+  - csv
+  - excel
+  - pdf
+ml:
+  enabled: true
+  models:
+    anomaly_detection:
+      contamination: 0.1
+      type: IsolationForest
+    failure_prediction:
+      max_depth: 10
+      n_estimators: 100
+      type: RandomForest
+    time_series:
+      epochs: 50
+      sequence_length: 24
+      type: LSTM
+reliability:
+  availability_threshold: 0.99
+  failure_severity_weights:
+    Critical: 1.0
+    High: 0.8
+    Low: 0.4
+    Medium: 0.6
+  mtbf_threshold: 168.0
+  mttr_threshold: 4.0
+system:
+  log_file: system_analysis.log
+  log_level: INFO
+  name: ИКС Анализ
+  version: 2.0.0
+visualization:
+  colors:
+    info: '#9467bd'
+    primary: '#1f77b4'
+    secondary: '#ff7f0e'
+    success: '#2ca02c'
+    warning: '#d62728'
+  dpi: 300
+  figure_size:
+  - 12
+  - 8
+  style: seaborn-v0_8
